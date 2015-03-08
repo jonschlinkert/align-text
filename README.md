@@ -21,6 +21,27 @@ align(text, callback_function_or_integer);
 - `text` can be a **string or array**. If a string is passed, a string will be returned. If an array is passed, an array will be returned. 
 - `callback|integer`: if an integer, the text will be indented by that amount. If a function, it must return an integer representing the amount of leading indentation to use as `align` loops over each line. 
 
+**Example**
+
+```js
+align(text, 4);
+```
+
+Would align:
+
+```
+abc
+abc
+abc
+```
+To:
+
+```
+    abc
+    abc
+    abc
+```
+
 ## callback
 
 ### params
@@ -161,7 +182,10 @@ elit, sed do eiusmod tempor incididunt
 
 
 ## Related projects
-{%= related(['right-align', 'center-align', 'justify', 'word-wrap']) %}  
+* [right-align](https://github.com/jonschlinkert/right-align): Right-align the text in a string.
+* [center-align](https://github.com/jonschlinkert/center-align): Center-align the text in a string.
+* [justify](https://github.com/bahamas10/node-justify): Left or right (or both) justify text using a custom width and character
+* [word-wrap](https://github.com/jonschlinkert/word-wrap): Wrap words to a specified length.  
 
 ## Running tests
 Install dev dependencies.

@@ -1,7 +1,7 @@
 {
   "name": "align-text",
   "description": "Align the text in a string.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/jonschlinkert/align-text",
   "author": {
     "name": "Jon Schlinkert",
@@ -36,5 +36,19 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*"
-  }
+  },
+  "keywords": [
+    "align",
+    "align-center",
+    "alignment",
+    "center",
+    "center-align",
+    "indent",
+    "pad",
+    "padding",
+    "right",
+    "right-align",
+    "text",
+    "typography"
+  ]
 }
