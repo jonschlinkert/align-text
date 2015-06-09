@@ -17,20 +17,27 @@ module.exports = function alignText(val, fn) {
   if (type === 'array') {
     lines = val;
   } else if (type === 'string') {
-    lines = val.split(/[\r\n]/);
+    lines = val.split(/(?:\r\n|\n)/);
   } else {
     throw new TypeError('align-text expects a string or array.');
   }
 
+  var fnType = typeOf(fn);
   var len = lines.length;
   var max = longest(lines);
   var res = [], i = 0;
 
   while (len--) {
-    var line = lines[i++];
-    var diff = typeof fn === 'function'
-      ? fn(line.length, max.length, line, lines, i)
-      : typeof fn === 'number' ? fn : 0;
+    var line = String(lines[i++]);
+    var diff;
+
+    if (fnType === 'function') {
+      diff = fn(line.length, max.length, line, lines, i);
+    } else if (fnType === 'number') {
+      diff = fn;
+    } else {
+      diff = max.length - line.length;
+    }
 
     if (typeOf(diff) === 'number') {
       res.push(repeat(' ', diff) + line);
