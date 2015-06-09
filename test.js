@@ -58,10 +58,18 @@ var character = [
 
 describe('align', function () {
   describe('when a number is passed:', function () {
-    it('should indent lines by that amount:', function () {
+    it('should indent lines by the number passed:', function () {
       align(fixture, 5).should.eql(integer);
     });
   });
+
+  describe('when a number is passed:', function () {
+    it('should auto-indent values in an array:', function () {
+      align([7, 8, 9, 10]).should.eql([' 7', ' 8', ' 9', '10']);
+      align(['a', '    b']).should.eql(['    a', '    b']);
+    });
+  });
+
   describe('when the callback returns a number:', function () {
     it('should indent lines in an array:', function () {
       align(fixture, function (len, max, line, lines) {
@@ -75,6 +83,7 @@ describe('align', function () {
       }).should.eql(expected.join('\n'));
     });
   });
+
   describe('when the callback returns an object:', function () {
     it('should use the `indent` property:', function () {
       align(fixture, function (len, max, line, lines) {
