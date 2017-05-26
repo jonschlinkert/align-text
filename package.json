@@ -24,14 +24,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "kind-of": "^3.0.2",
-    "longest": "^1.0.1",
-    "repeat-string": "^1.5.2"
+    "kind-of": "^4.0.0",
+    "longest": "^2.0.1",
+    "repeat-string": "^1.6.1"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*",
-    "word-wrap": "^1.0.3"
+    "word-wrap": "^1.2.2",
+    "gulp-format-md": "^0.1.12"
   },
   "keywords": [
     "align",
@@ -46,5 +45,18 @@
     "right-align",
     "text",
     "typography"
-  ]
+  ],
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    }
+  }
 }

@@ -8,7 +8,6 @@
 'use strict';
 
 var assert = require('assert');
-var should = require('should');
 var align = require('./');
 
 var fixture = [
@@ -57,56 +56,59 @@ var character = [
 ];
 
 describe('align', function() {
-  describe('when a number is passed:', function() {
-    it('should indent lines by the number passed:', function() {
-      align(fixture, 5).should.eql(integer);
+  describe('indent', function() {
+    it('should indent lines to the given value', function() {
+      assert.deepEqual(align(fixture, 5), integer);
+    });
+
+    it('should indent values to the longest length in an array', function() {
+      assert.deepEqual(align([7, 8, 9, 10]), [' 7', ' 8', ' 9', '10']);
+      assert.deepEqual(align(['a', '    b']), ['    a', '    b']);
     });
   });
 
-  describe('when a number is passed:', function() {
-    it('should auto-indent values in an array:', function() {
-      align([7, 8, 9, 10]).should.eql([' 7', ' 8', ' 9', '10']);
-      align(['a', '    b']).should.eql(['    a', '    b']);
-    });
-  });
-
-  describe('when the callback returns a number:', function() {
-    it('should indent lines in an array:', function() {
-      align(fixture, function(len, max, line, lines) {
+  describe('function', function() {
+    it('should indent a string to the returned number', function() {
+      var actual = align(fixture, function(len, max, line, lines) {
         return Math.floor((max - len) / 2);
-      }).should.eql(expected);
+      });
+      assert.deepEqual(actual, expected);
     });
 
-    it('should indent lines in a string:', function() {
-      align(fixture.join('\n'), function(len, max, line, lines) {
+    it('should indent lines in an array to the returned number', function() {
+      var actual = align(fixture.join('\n'), function(len, max, line, lines) {
         return Math.floor((max - len) / 2);
-      }).should.eql(expected.join('\n'));
+      });
+      assert.deepEqual(actual, expected.join('\n'));
     });
   });
 
-  describe('when the callback returns an object:', function() {
-    it('should use the `indent` property:', function() {
-      align(fixture, function(len, max, line, lines) {
+  describe('object', function() {
+    it('should use the `indent` property', function() {
+      var actual = align(fixture, function(len, max, line, lines) {
         return { indent: Math.floor((max - len) / 2) };
-      }).should.eql(expected);
+      });
+      assert.deepEqual(actual, expected);
     });
 
-    it('should use the `prefix` property:', function() {
-      align(fixture, function(len, max, line, lines) {
-        return {prefix: '- '};
-      }).should.eql(prefixed);
+    it('should use the `prefix` property', function() {
+      var actual = align(fixture, function(len, max, line, lines) {
+        return { prefix: '- ' };
+      });
+      assert.deepEqual(actual, prefixed);
     });
 
-    it('should use the `character` property:', function() {
-      align(fixture, function(len, max, line, lines) {
+    it('should use the `character` property', function() {
+      var actual = align(fixture, function(len, max, line, lines) {
         return { indent: Math.floor((max - len) / 2), character: '~', };
-      }).should.eql(character);
+      });
+      assert.deepEqual(actual, character);
     });
   });
 
-  it('should throw an error on invalid args:', function() {
-    (function() {
+  it('should throw an error on invalid args', function() {
+    assert.throws(function() {
       align();
-    }).should.throw('align-text expects a string or array.');
+    });
   });
 });
