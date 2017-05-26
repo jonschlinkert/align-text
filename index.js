@@ -1,5 +1,5 @@
 /*!
- * align-text <git://github.com/jonschlinkert/align-text.git>
+ * align-text <https://github.com/jonschlinkert/align-text>
  *
  * Copyright (c) 2015-2017, Jon Schlinkert.
  * Released under the MIT License.
@@ -12,27 +12,27 @@ var repeat = require('repeat-string');
 var longest = require('longest');
 
 module.exports = function alignText(val, fn) {
-  var lines, type = typeOf(val);
+  var originalType = typeOf(val);
+  var lines = val;
 
-  if (type === 'array') {
-    lines = val;
-  } else if (type === 'string') {
+  if (originalType === 'string') {
     lines = val.split(/(?:\r\n|\n)/);
-  } else {
+  } else if (originalType !== 'array') {
     throw new TypeError('align-text expects a string or array.');
   }
 
   var fnType = typeOf(fn);
-  var len = lines.length;
   var max = longest(lines);
-  var res = [], i = 0;
+  var len = lines.length;
+  var idx = -1;
+  var res = [];
 
-  while (len--) {
-    var line = String(lines[i++]);
+  while (++idx < len) {
+    var line = String(lines[idx]);
     var diff;
 
     if (fnType === 'function') {
-      diff = fn(line.length, max.length, line, lines, i);
+      diff = fn(line.length, max.length, line, lines, idx);
     } else if (fnType === 'number') {
       diff = fn;
     } else {
@@ -47,6 +47,6 @@ module.exports = function alignText(val, fn) {
     }
   }
 
-  if (type === 'array') return res;
+  if (originalType === 'array') return res;
   return res.join('\n');
 };
