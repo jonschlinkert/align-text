@@ -1,8 +1,8 @@
 /*!
- * align-text <https://github.com/jonschlinkert/align-text>
+ * align-text <git://github.com/jonschlinkert/align-text.git>
  *
- * Copyright (c) 2015, Jon Schlinkert.
- * Licensed under the MIT License.
+ * Copyright (c) 2015-2017, Jon Schlinkert.
+ * Released under the MIT License.
  */
 
 'use strict';

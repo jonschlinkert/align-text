@@ -3,14 +3,12 @@
   "description": "Align the text in a string.",
   "version": "0.1.4",
   "homepage": "https://github.com/jonschlinkert/align-text",
-  "author": {
-    "name": "Jon Schlinkert",
-    "url": "https://github.com/jonschlinkert"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jonschlinkert/align-text.git"
-  },
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "contributors": [
+    "Jon Schlinkert (http://twitter.com/jonschlinkert)",
+    "Shinnosuke Watanabe (https://shinnn.github.io)"
+  ],
+  "repository": "jonschlinkert/align-text",
   "bugs": {
     "url": "https://github.com/jonschlinkert/align-text/issues"
   },
