@@ -24,13 +24,14 @@
     "test": "mocha"
   },
   "dependencies": {
-    "kind-of": "^4.0.0",
+    "kind-of": "^5.0.2",
     "longest": "^2.0.1",
     "repeat-string": "^1.6.1"
   },
   "devDependencies": {
-    "word-wrap": "^1.2.2",
-    "gulp-format-md": "^0.1.12"
+    "gulp-format-md": "^1.0.0",
+    "mocha": "^3.5.3",
+    "word-wrap": "^1.2.3"
   },
   "keywords": [
     "align",
