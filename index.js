@@ -18,7 +18,7 @@ module.exports = function alignText(val, fn) {
   if (originalType === 'string') {
     lines = val.split(/(?:\r\n|\n)/);
   } else if (originalType !== 'array') {
-    throw new TypeError('align-text expects a string or array.');
+    throw new TypeError('No input found. Provide a string or array to align.');
   }
 
   var fnType = typeOf(fn);
